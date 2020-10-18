@@ -39,7 +39,7 @@ Things you may want to cover:
 
 ### Association
 - has_many :items
-- has_many :comements dependent: :destroy
+- has_many :comments dependent: :destroy
 - has_many :favorites dependent: :destroy
 - has_one : delivery_address dependent: :destroy
 - has_one : credit_card dependent: :destroy
@@ -52,19 +52,20 @@ Things you may want to cover:
 | name             | string     | null: false |
 | price            | integer    | null: false |
 | description      | text       | null: false |
-| category_id      | references | null: false |
-| brand            | references | null: false |
-| images_id        | references | null: false |
-| condetion_id     | references | null: false |
-| postage_payer_id | references | null: false |
-| shipping_area_id | references | null: false |
-| shipping_date_id | references | null: false |
+| category_id      | integer    | null: false |
+| brand_id         | integer    | null: false |
+| images_id        | integer    | null: false |
+| condetion_id     | integer    | null: false |
+| postage_payer_id | integer    | null: false |
+| shipping_area_id | integer    | null: false |
+| shipping_date_id | integer    | null: false |
 
 ### Association
 - belong_to :user
 - belong_to :category
 - belong_to :brand
 - belong_to_active_hash :condetion
+- belong_to_active_hash :brand
 - belong_to_active_hash :postage_payer
 - belong_to_active_hash :shipping_area
 - belong_to_active_hash :shipping_date
@@ -94,17 +95,6 @@ Things you may want to cover:
 ### Association
 - belong_to :user
 - belong_to :item
-
-
-## items_images テーブル
-| Column    | Type       | Options     |
-| ----------| ---------- | ----------- |
-| item      | refarenceas| null: false |
-| image     | string     | null: false |
-
-### Association
-- belongs_to :item
-
 
 
 ## category テーブル
@@ -171,26 +161,12 @@ Things you may want to cover:
 
 | Column          | Type       | Options     |
 | --------------- | ---------- | ----------- |
-| postal_code     | integer    | null:false  |
+| postal_code     | string     | null:false  |
 | prefectures_code| integer    | null:false  |
 | municipality    | string     | null:false  |
-| house_number    | string     | null:false  |  
-| building_name   | string     | null:false  |
-| phone_number    | integer    | null:false  |
-
-### Association
-- belongs_to :user
-
-
-
-## credit_card テーブル
-
-| Column          | Type       | Options     |
-| --------------- | ---------- | ----------- |
-| card_number     | integer    | null:false  |
-| expiration_year | integer    | null:false  |
-| expiration_day  | integer    | null:false  |
-| security_code   | integer    | null:false  |
+| house_number    | integer    | null:false  |  
+| building_name   | string     |             |
+| phone_number    | string     | null:false  |
 
 ### Association
 - belongs_to :user
