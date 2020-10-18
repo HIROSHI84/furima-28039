@@ -43,8 +43,6 @@ Things you may want to cover:
 - has_many :items
 - has_many :comments dependent: :destroy
 - has_many :favorites dependent: :destroy
-- has_one : delivery_address dependent: :destroy
-- has_one : credit_card dependent: :destroy
 
 
 
@@ -62,14 +60,13 @@ Things you may want to cover:
 | shipping_date_id | integer    | null: false                    |
 
 ### Association
-- belong_to :user
-- belong_to :category
-- belong_to :brand
-- belong_to_active_hash :condetion
-- belong_to_active_hash :postage_payer
-- belong_to_active_hash :shipping_area
-- belong_to_active_hash :shipping_date
-- has_many :item_images
+- belongs_to :user
+- belongs_to_active_hash :category
+- belongs_to_active_hash :condetion
+- belongs_to_active_hash :postage_payer
+- belongs_to_active_hash :shipping_area
+- belongs_to_active_hash :shipping_date
+- has_one_attached :item_images
 
 
 
@@ -81,8 +78,8 @@ Things you may want to cover:
 | item     | references | null: false ,foreign_key: true |
 
 ### Association
-- belong_to :user
-- belong_to :item
+- belongs_to :user
+- belongs_to :item
 
 
 
@@ -93,35 +90,37 @@ Things you may want to cover:
 | item     | references | null: false , foreign_key: true |
 
 ### Association
-- belong_to :user
-- belong_to :item
+- belongs_to :user
+- belongs_to :item
 
 
 
 ## purchases テーブル
 
-| Column      | Type       | Options     |
-| ----------- | ---------- | ----------- |
-| user        | string     | null: false |
-| item        | string     | null: false |
+| Column      | Type       | Options                         |
+| ----------- | ---------- | ------------------------------- |
+| user        | references | null: false , foreign_key: true |
+| item        | references | null: false , foreign_key: true |
 
 ### Association
 - has_one :delivery_address
+- belongs_to :user
+- belongs_to :item
 
 
 
 ## delivery_addresses テーブル
 
-| Column          | Type       | Options                         |
-| --------------- | ---------- | ------------------------------- |
-| postal_code     | string     | null:false                      |
-| prefectures_code| integer    | null:false                      |
-| municipality    | string     | null:false                      |
-| house_number    | string     | null:false                      |  
-| building_name   | string     |                                 |
-| phone_number    | string     | null:false                      |
-| purchase_id     | references | null: false , foreign_key: true |
+| Column           | Type       | Options                         |
+| ---------------  | ---------- | ------------------------------- |
+| postal_code      | string     | null:false                      |
+| shipping_area_id | integer    | null:false                      |
+| municipality     | string     | null:false                      |
+| house_number     | string     | null:false                      |  
+| building_name    | string     |                                 |
+| phone_number     | string     | null:false                      |
+| purchase_id      | references | null: false , foreign_key: true |
 
 ### Association
-- belong_to :purchase
+- belongs_to :purchase
 
