@@ -43,6 +43,7 @@ Things you may want to cover:
 - has_many :items
 - has_many :comments dependent: :destroy
 - has_many :favorites dependent: :destroy
+- has_many :purchases 
 
 
 
@@ -67,6 +68,7 @@ Things you may want to cover:
 - belongs_to_active_hash :shipping_area
 - belongs_to_active_hash :shipping_date
 - has_one_attached :item_images
+- has_one :purchases 
 
 
 
@@ -119,7 +121,7 @@ Things you may want to cover:
 | house_number     | string     | null:false                      |  
 | building_name    | string     |                                 |
 | phone_number     | string     | null:false                      |
-| purchase_id      | references | null: false , foreign_key: true |
+| purchase         | references | null: false , foreign_key: true |
 
 ### Association
 - belongs_to :purchase
