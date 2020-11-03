@@ -77,5 +77,41 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include("Birth_day can't be blank")
     end
+
+    it 'emailに＠を含まない場合は登録できないこと' do
+      user = build(:user, email: 'aaabb')
+      user.valid?
+      expect(user.errors[:password]).to include('は不正な値です')
+    end
+
+    it 'password:半角英数混合でなければ登録できないこと' do
+      user = build(:user, password: 'aaaaaa')
+      user.valid?
+      expect(user.errors[:password]).to include('は不正な値です')
+    end
+
+    it 'first_nameが全角（漢字・ひらがな・カタカナ）でなければ登録できないこと' do
+      user = build(:user, first_name: 'ｱｲｳｴｵ')
+      user.valid?
+      expect(user.errors[:first_name]).to include('は不正な値です')
+    end
+
+    it 'last_nameが全角（漢字・ひらがな・カタカナ）でなければ登録できないこと' do
+      user = build(:user, last_name: 'ｱｲｳｴｵ')
+      user.valid?
+      expect(user.errors[:last_name]).to include('は不正な値です')
+    end
+
+    it 'first_name_kanaが全角カタカナでなければ登録できないこと' do
+      user = build(:user, first_name_kana: 'あいうえお')
+      user.valid?
+      expect(user.errors[:first_name_kana]).to include('は不正な値です')
+    end
+
+    it 'last_name_kanaが全角カタカナでなければ登録できないこと' do
+      user = build(:user, last_name_kana: 'あいうえお')
+      user.valid?
+      expect(user.errors[:last_name_kana]).to include('は不正な値です')
+    end
   end
 end
