@@ -6,18 +6,24 @@ class User < ApplicationRecord
 
   has_many :items
 
-  validates :nickname, presence: true
-  validates :email, presence: true
-  validates :password, presence: true
-  validates :password_confirmation, presence: true
-  validates :password, format: { with: /\A[a-z0-9]+\z/i, message: 'は半角英数で入力してください。' }
-  validates :first_name, presence: true
-  validates :last_name, presence: true
-  validates :first_name, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: 'は全角で入力してください。' }
-  validates :last_name, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: 'は全角で入力してください。' }
-  validates :first_name_kana, presence: true
-  validates :last_name_kana, presence: true
-  validates :first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/, message: 'は全角カタカナで入力して下さい。' }
-  validates :last_name_kana, format: { with: /\A[ァ-ヶー－]+\z/, message: 'は全角カタカナで入力して下さい。' }
-  validates :birth_day, presence: true
+  validates :nickname, format: { with: /\A[a-z0-9]+\z/i, message: "は半角英数で入力してください。"}
+
+  with_options presence: true do
+  validates :nickname
+  validates :email
+  validates :password
+  validates :password_confirmation
+  validates :first_name
+  validates :last_name
+  validates :first_name_kana
+  validates :last_name_kana
+  validates :birth_day
+  end
+  
+  with_options format: { with: /\A[ぁ-んァ-ン一-龥]+\z/, message: '全角文字を使用してください' } do
+    validates :first_name
+    validates :last_name
+    validates :first_name_kana
+    validates :last_name_kana
+  end
 end
