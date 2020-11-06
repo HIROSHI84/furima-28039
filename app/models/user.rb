@@ -6,8 +6,6 @@ class User < ApplicationRecord
 
   has_many :items
 
-  validates :nickname, format: { with: /\A[a-z0-9]+\z/i, message: 'は半角英数で入力してください。' }
-
   with_options presence: true do
     validates :nickname
     validates :email
@@ -23,6 +21,9 @@ class User < ApplicationRecord
   with_options format: { with: /\A[ぁ-んァ-ン一-龥]+\z/, message: '全角文字を使用してください' } do
     validates :first_name
     validates :last_name
+  end
+
+  with_options format: { with: /\A[ァ-ヶー－]+\z/, message: '全角カタカナを使用してください' } do
     validates :first_name_kana
     validates :last_name_kana
   end
