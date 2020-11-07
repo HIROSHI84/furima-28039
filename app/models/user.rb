@@ -27,4 +27,8 @@ class User < ApplicationRecord
     validates :first_name_kana
     validates :last_name_kana
   end
+
+  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])\w{6,12}\z/.freeze
+  validates :password, presence: true,
+                       format: { with: VALID_PASSWORD_REGEX, message: '半角英字・数字それぞれを含む必要があります' }
 end
