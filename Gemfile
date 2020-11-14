@@ -34,7 +34,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'faker'
-  gem 'mini_magick'
 end
 
 group :development do
@@ -67,3 +66,6 @@ group :production do
 end
 
 gem 'devise'
+
+gem 'mini_magick'
+gem 'active_hash'
