@@ -12,9 +12,14 @@ class Item < ApplicationRecord
     validates :name
     validates :description
     validates :price
+    validates :image
     end
 
     with_options numericality: { other_than: 1 } do
         validates :category_id, :condition_id, :postage_payer_id, :shipping_area_id, :shipping_date_id
     end
+
+    validates :price, numericality: { only_integer: true, message: "is invalid. Input half-width characters." }
+    validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
+
 end
