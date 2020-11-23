@@ -8,9 +8,9 @@ RSpec.describe Item, type: :model do
 
   describe '商品出品機能' do
     it '画像は１枚必須であること' do
-      @item.image = nil
+      @item.item_images = nil
       @item.valid?
-      expect(@item.errors.full_messages).to include "Image can't be blank"
+      expect(@item.errors.full_messages).to include "Item images can't be blank"
     end
 
     it '商品名が必須であること' do
