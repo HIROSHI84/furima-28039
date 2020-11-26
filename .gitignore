@@ -6,7 +6,6 @@
 
 # Ignore bundler config.
 /.bundle
-vendor/bundle
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -23,6 +22,7 @@ vendor/bundle
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+/credentials.yml.enc
 
 /public/packs
 /public/packs-test
