@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  get 'articles/index'
-  get 'articles/new'
+  # get 'articles/index'
+  # get 'articles/new'
   
   devise_for :users
   
-  #resources :users
+  # resources :users
   root to: 'items#index'
   resources :items, only: [:index, :new, :create, :edit] do
   end

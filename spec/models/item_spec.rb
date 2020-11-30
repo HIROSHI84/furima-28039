@@ -6,7 +6,12 @@ RSpec.describe Item, type: :model do
     @item = FactoryBot.build(:item)
   end
 
-  describe '商品出品機能' do
+  context '商品出品ができる時' do
+    it 'item_images,name,description,category_id,condition_id,postage_payer_id,shipping_area_id,shipping_date_id,priceがあれば登録できる' do
+    end
+  end
+
+  context '商品出品ができない時' do
     it '画像は１枚必須であること' do
       @item.item_images = nil
       @item.valid?
