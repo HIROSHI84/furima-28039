@@ -1,7 +1,3 @@
-// window.addEventListener('load', () => {
-//     console.log("ok");
-// })
-
 window.addEventListener("DOMContentLoaded", () => {
     const path = location.pathname
     const pathRegex = /^(?=.*item)(?=.*edit)/
