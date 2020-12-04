@@ -67,7 +67,7 @@ Things you may want to cover:
 - belongs_to_active_hash :postage_payer
 - belongs_to_active_hash :shipping_area
 - belongs_to_active_hash :shipping_date
-- has_one_attached :item_images
+- has_one_attached :item_image
 - has_one :purchases 
 
 

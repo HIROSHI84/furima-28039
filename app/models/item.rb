@@ -5,14 +5,14 @@ class Item < ApplicationRecord
   belongs_to_active_hash :postage_payer
   belongs_to_active_hash :shipping_area
   belongs_to_active_hash :shipping_date
-
-  has_one_attached :item_images
+  belongs_to :user
+  has_one_attached :item_image
 
   with_options presence: true do
     validates :name
     validates :description
     validates :price
-    validates :item_images
+    validates :item_image
   end
 
   with_options numericality: { other_than: 1 } do

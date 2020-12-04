@@ -8,6 +8,10 @@ RSpec.describe Item, type: :model do
     end
 
     context '商品出品ができる時' do
+      it 'item_image,name,description,category_id,condition_id,postage_payer_id,shipping_area_id,shipping_date_id,priceが正しく入力されていれば登録できる' do
+        expect(@item).to be_valid
+      end
+
       it '価格は３００円以上であれば、保存できること' do
         @item = build(:item)
         @item.price = 300
@@ -16,9 +20,9 @@ RSpec.describe Item, type: :model do
 
     context '商品出品ができない時' do
       it '画像は１枚必須であること' do
-        @item.item_images = nil
+        @item.item_image = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include "Item images can't be blank"
+        expect(@item.errors.full_messages).to include "Item image can't be blank"
       end
 
       it '商品名が必須であること' do
